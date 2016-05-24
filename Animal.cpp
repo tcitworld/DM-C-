@@ -1,41 +1,21 @@
 #include "Animal.hpp"
 
-Animal::Animal(string nom, int ref) {
-	this->nom = new string(nom);
-	this->ref = new int(ref);
-}
-
-Animal::Animal(const Animal &a) {
-	this->nom = a.nom;
-	this->ref = a.ref;
-}
+Animal::Animal(string nom, int ref): nom(nom), ref(ref) {}
 
 Animal::~Animal() {
 	cout << "Destructeur de Animal" << endl;
 }
 
 string Animal::getNom() const {
-	return *nom;
+	return this->nom;
 }
 
 int Animal::getRef() const {
-	return *ref;
+	return this->ref;
 }
 
 void Animal::affiche(ostream &out) const {
-	out << "L'animal se nomme " << *nom << " et sa référence est " << *ref;
-}
-
-Animal & Animal::operator = (const Animal &a) {
-	if (this != &a) {
-		int *refint = new int(a.getRef());
-		string *nomint = new string(a.getNom());
-		delete ref;
-		delete nom;
-		ref = refint;
-		nom = nomint;
-	}
-	return *this;
+	out << "L'animal se nomme " << this->nom << " et sa référence est " << this->ref;
 }
 
 void Animal::cri() const {
