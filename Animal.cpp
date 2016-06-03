@@ -2,6 +2,8 @@
 
 Animal::Animal(string nom, int ref): nom(nom), ref(ref) {}
 
+Animal::Animal(const Animal &a): nom(a.getNom()), ref(a.getRef()) {}
+
 Animal::~Animal() {
 	cout << "Destructeur de Animal" << endl;
 }
@@ -28,7 +30,7 @@ void Animal::inverseBavard() {
 	Animal::bavard = !Animal::bavard;
 }
 
-ostream& operator<< (ostream &out, const Animal a) {
+ostream& operator<< (ostream &out, const Animal &a) {
 	a.affiche(out);
 	return out;
 }

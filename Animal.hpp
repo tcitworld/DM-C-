@@ -13,17 +13,19 @@ protected:
 	static bool bavard;
 
 public:
+	//Animal();
 	Animal(string nom, int ref);
+	Animal(const Animal &a);
 	~Animal();
 
 	string getNom() const;
 	int getRef() const;
-	void affiche(ostream &out) const;
+	virtual void affiche(ostream &out) const;
 	void cri() const;
 
 	static void inverseBavard();
 };
 
-ostream& operator << (ostream &out, Animal a);
+ostream& operator << (ostream &out, const Animal &a);
 
 #endif
