@@ -39,8 +39,12 @@ int main() {
 	cout << a5 << endl;
 	cout << *a6 << endl;
 
-	Tablo<Animal*> tb(10);
+	cout << "Tableau" << endl;
 
+	Tablo<Animal> tb(5);
+	tb.add(*a6);
+	tb.add(a2);
+	cout << tb << endl;
 
 	return 0;
 }

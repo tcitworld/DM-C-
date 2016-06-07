@@ -1,5 +1,7 @@
 #include "Animal.hpp"
 
+Animal::Animal() {}
+
 Animal::Animal(string nom, int ref): nom(nom), ref(ref) {}
 
 Animal::Animal(const Animal &a): nom(a.getNom()), ref(a.getRef()) {}

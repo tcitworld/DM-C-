@@ -10,10 +10,11 @@ template<class T> class Tablo {
 
 public:
 	Tablo(int);
-	Tablo(Tablo, int);
+	Tablo(const Tablo &);
 	void resize(int);
-	T getTab() const;
-	void add(T);
+	T* getTab() const;
+	int getNbElem() const;
+	void add(const T &);
 };
 
 template<class T>
@@ -23,29 +24,51 @@ Tablo<T>::Tablo(int a) {
 }
 
 template<class T>
-Tablo<T>::Tablo(Tablo<T> t, int a) {
-	this->nbElem = a;
-	this->tab = t.getTab();
+Tablo<T>::Tablo(const Tablo<T> &t) {
+	this->nbElem = t.getNbElem();
+	for (int i = 0; i < t.getNbElem(); ++i)
+	{
+		this->add(t.getTab()[i]);
+	}
 }
 
 template<class T>
 void Tablo<T>::resize(int a) {
-	for (int i = 0; i < this->nbElem; ++i)
+	T* resizeArr = new T[a];
+	for (int i = 0; i < nbElem; ++i)
 	{
-		/* code */
+		resizeArr[i] = tab[i];
 	}
-	this->nbElem = a;
+	tab = resizeArr;
+	delete[] resizeArr;
 }
 
 template<class T>
-T Tablo<T>::getTab() const {
-	return this->tab;
+T* Tablo<T>::getTab() const {
+	return tab;
 }
 
 template<class T>
-void Tablo<T>::add(T elem) {
-	this->tab[nbElem++] = elem;
+int Tablo<T>::getNbElem() const {
+	return nbElem;
+}
+
+template<class T>
+void Tablo<T>::add(const T &elem) {
 	this->resize(nbElem);
+	cout << elem << endl;
+	this->tab[nbElem++] = elem;
+}
+
+template<class T>
+ostream & operator <<(ostream &out, const Tablo<T> &t) {
+	cout << "cout du tbl" << endl;
+	for (int i = 0; i < t.getNbElem(); ++i)
+	{
+		cout << i << endl;
+		out << t.getTab()[i] << " ";
+	}
+	return out;
 }
 
 #endif

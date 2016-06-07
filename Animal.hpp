@@ -13,7 +13,7 @@ protected:
 	static bool bavard;
 
 public:
-	//Animal();
+	Animal();
 	Animal(string nom, int ref);
 	Animal(const Animal &a);
 	~Animal();
