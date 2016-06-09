@@ -1,6 +1,10 @@
 #include "Animal.hpp"
 
+bool Animal::bavard = false;
+
 Animal::Animal() {}
+
+Animal::Animal(string nom):nom(nom), ref(0) {}
 
 Animal::Animal(string nom, int ref): nom(nom), ref(ref) {}
 
@@ -19,14 +23,14 @@ int Animal::getRef() const {
 }
 
 void Animal::affiche(ostream &out) const {
-	out << "L'animal se nomme " << this->nom << " et sa référence est " << this->ref;
+	if (bavard){
+		out << "L'animal se nomme " << this->nom << " et sa référence est " << this->ref;
+	}
 }
 
 void Animal::cri() const {
 	cout << "Cri inconnu" << endl;
 }
-
-bool Animal::bavard = true;
 
 void Animal::inverseBavard() {
 	Animal::bavard = !Animal::bavard;

@@ -26,3 +26,8 @@ public:
 };
 
 #endif
+
+
+// b/ On n'a pas besoin de redéfinir getNom() et getRef() car cette classe hérite d'Animal où elles sont définies.
+// c/ On ne peut pas utiliser nom et ref car ces attributs sont privés, mais bavard est protected donc accessible.
+// g/ Oui mais seul le constructeur de vache est affiché.

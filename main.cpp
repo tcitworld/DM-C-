@@ -11,6 +11,8 @@ int main() {
 	Animal a2("Léopard", 7);
 	Vache v1("Anabelle", 432, 4);
 
+	a1.inverseBavard();
+
 	cout << "Lion" << endl;
 	cout << a1 << endl;
 
@@ -44,7 +46,13 @@ int main() {
 	Tablo<Animal> tb(5);
 	tb.add(*a6);
 	tb.add(a2);
-	cout << tb << endl;
 
 	return 0;
 }
+
+// a/ La méthode statique de la classe Animal.
+// b/ Seuls les cris, et les destructeurs sont affichés.
+// c/ Le code compile
+// d/ Tous sauf la partie Animal à cause de la méthode static inverseBavard utilisé plus en aval. (rend l'attribut bavard à faux)
+// e/ Non car les données correspondant à la tortue sont toujours là. Le chemin du pointeur pointé à été détruit.
+// f/ Cela rend la classe non instenciable, Animal est ainsi une classe abstraite.

@@ -60,15 +60,4 @@ void Tablo<T>::add(const T &elem) {
 	this->tab[nbElem++] = elem;
 }
 
-template<class T>
-ostream & operator <<(ostream &out, const Tablo<T> &t) {
-	cout << "cout du tbl" << endl;
-	for (int i = 0; i < t.getNbElem(); ++i)
-	{
-		cout << i << endl;
-		out << t.getTab()[i] << " ";
-	}
-	return out;
-}
-
 #endif
