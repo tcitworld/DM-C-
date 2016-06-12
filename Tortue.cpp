@@ -22,11 +22,20 @@ void Tortue::setAge(int na) {
 }
 
 void Tortue::affiche(ostream &out) const {
-	Animal::affiche(out);
-	out << endl;
-	out << "La tortue vit dans le milieu " << milieu << " et a " << age << " ans";
+	if (bavard) {
+		Animal::affiche(out);
+		out << endl;
+		out << "La tortue vit dans le milieu " << milieu << " et a " << age << " ans";
+	}
 }
 
 void Tortue::cri() const {
 	cout << "La tortue stridule" << endl;
+}
+
+Tortue & Tortue::operator=(const Animal & a) {
+    if(&a != this) {
+		Animal(a);
+	}
+    return *this;
 }

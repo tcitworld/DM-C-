@@ -9,22 +9,12 @@ template<class T> class Tablo {
 	int nbElem;
 
 public:
-	Tablo(int);
-	Tablo(const Tablo &);
-	void resize(int);
-	T* getTab() const;
-	int getNbElem() const;
-	void add(const T &);
-};
-
-template<class T>
-Tablo<T>::Tablo(int a) {
-	this->nbElem = a;
+Tablo() {
+	this->nbElem = 0;
 	this->tab = new T[nbElem];
 }
 
-template<class T>
-Tablo<T>::Tablo(const Tablo<T> &t) {
+Tablo(const Tablo<T> &t) {
 	this->nbElem = t.getNbElem();
 	for (int i = 0; i < t.getNbElem(); ++i)
 	{
@@ -32,9 +22,8 @@ Tablo<T>::Tablo(const Tablo<T> &t) {
 	}
 }
 
-template<class T>
-void Tablo<T>::resize(int a) {
-	T* resizeArr = new T[a];
+void resize(int a) {
+	T* resizeArr = new T[a+1];
 	for (int i = 0; i < nbElem; ++i)
 	{
 		resizeArr[i] = tab[i];
@@ -43,21 +32,22 @@ void Tablo<T>::resize(int a) {
 	delete[] resizeArr;
 }
 
-template<class T>
-T* Tablo<T>::getTab() const {
+T* getTab() const {
 	return tab;
 }
 
-template<class T>
-int Tablo<T>::getNbElem() const {
+int getNbElem() const {
 	return nbElem;
 }
 
-template<class T>
-void Tablo<T>::add(const T &elem) {
+T getElem(int a) {
+	return tab[a];
+}
+
+void add(const T &elem) {
 	this->resize(nbElem);
-	cout << elem << endl;
 	this->tab[nbElem++] = elem;
 }
+};
 
 #endif

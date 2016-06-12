@@ -5,7 +5,9 @@ Vache::Vache(string nom, int ref, int nbPetits): Animal(nom, ref), nbPetits(nbPe
 Vache::Vache(const Vache &v): Animal(v.getNom(), v.getRef()), nbPetits(v.getNbPetits()) {}
 
 Vache::~Vache() {
-	cout << "Destructeur vache" << endl;
+	if (bavard) {
+		cout << "Destructeur vache" << endl;
+	}
 }
 
 
@@ -18,11 +20,20 @@ void Vache::setNbPetits(int na) {
 }
 
 void Vache::affiche(ostream &out) const {
-	Animal::affiche(out);
-	out << endl;
-	out << "La vache possède " << nbPetits << " petits";
+	if (bavard) {
+		Animal::affiche(out);
+		out << endl;
+		out << "La vache possède " << nbPetits << " petits";
+	}
 }
 
 void Vache::cri() const {
 	cout << "La vache meugle" << endl;
+}
+
+Vache & Vache::operator=(const Animal & a) {
+    if(&a != this) {
+		Animal(a);
+	}
+    return *this;
 }

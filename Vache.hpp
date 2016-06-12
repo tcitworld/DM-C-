@@ -15,6 +15,7 @@ public:
 	Vache(string nom, int ref, int nbPetits);
 	Vache(const Vache &);
 	~Vache();
+	Vache & operator=(const Animal &);
 
 	int getNbPetits() const;
 	void setNbPetits(int na);
